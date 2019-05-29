@@ -1,0 +1,21 @@
+<h3>Change a restaurant</h3>
+<form (submit)="onSubmit()">
+    Your Name:<input type="text" name="newReview.name" required minlength="3" [(ngModel)]="newReview.name" #name = ngModel /> <br>
+    <p *ngIf="!name.valid && name.touched">Your name is too short</p>
+
+
+    Rating: <select name="newReview.stars" min = "1" max = "5" required [(ngModel)] = "newReview.stars" #stars = ngModel>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  <br>
+
+    Review:<input type="text" name="newReview.review" required minlength="3" [(ngModel)]="newReview.review" #review = ngModel /> <br>
+    <p *ngIf="!review.valid && review.touched">Your review is too short</p>
+
+    <input *ngIf="name.valid && review.valid && stars.valid" type="submit" value="Add Review" />
+    <button [routerLink]="[ '/restaurants', currentId]">Cancel</button>
+</form>

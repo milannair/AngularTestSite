@@ -1,0 +1,11 @@
+<h3>Change a restaurant</h3>
+<form (submit)="onSubmit()">
+    Restaurant Name:<input type="text" name="newRes.name" required minlength="3" [(ngModel)]="editRes.name" #name = ngModel /> <br>
+    <p *ngIf="!name.valid && name.touched">Your name is too short</p>
+
+    Cuisine:<input type="text" name="newRes.cuisine" required minlength="3" [(ngModel)]="editRes.cuisine" #cuisine = ngModel /> <br>
+    <p *ngIf="!cuisine.valid && cuisine.touched">Your cuisine is too short</p>
+
+    <input *ngIf="name.valid && cuisine.valid" type="submit" value="Save Restaurant" />
+    <button [routerLink]="[ '/restaurants']">Cancel</button>
+</form>
