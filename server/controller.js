@@ -26,8 +26,7 @@ module.exports = {
         res.json(deleteRes);
     },
     createReview: async(req, res) => {
-        const updateReview = await Restaurant.findByIdAndUpdate(req.params.id, {$push :{reviews:{name : req.body.name, stars: req.body.stars, review:req.body.review}}})
-            .catch(err => console.error('error ->', err));
+        const updateReview = await Restaurant.findByIdAndUpdate(req.params.id, {$push :{reviews:(req.body)}})
         res.json(updateReview);
     }
     
